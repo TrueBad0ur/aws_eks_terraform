@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: coffee
+  name: tea
   namespace: my-namespace
 spec:
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
-      app: coffee
+      app: tea
   template:
     metadata:
       labels:
-        app: coffee
+        app: tea
     spec:
       containers:
-      - name: coffee
+      - name: tea
         image: nginxdemos/nginx-hello:plain-text
         resources:
           requests:
@@ -29,7 +29,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: coffee-svc
+  name: tea-svc
   namespace: my-namespace
 spec:
   ports:
@@ -38,4 +38,4 @@ spec:
     protocol: TCP
     name: http
   selector:
-    app: coffee
+    app: tea
